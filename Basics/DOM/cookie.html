@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Example</title>
+    <style>
+         * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        .container {
+            margin-top: 50px;
+            width: 90%;
+            max-width: 480px;
+            padding: 40px;
+            background-color: white;
+            border: 1px solid #dcebdd;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(46, 93, 52, 0.12);
+        }
+
+         .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #355b3d;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #d9e5d9;
+            border-radius: 12px;
+            outline: none;
+            background-color: #f9fcf9;
+            color: #333;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #3e8b50;
+            background-color: white;
+            box-shadow: 0 0 0 4px rgba(62, 139, 80, 0.10);
+        }
+
+        input::placeholder {
+            color: #a5b2a7;
+        }
+
+        .save-btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #4b9b59, #236c3b);
+            color: white;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .save-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(46, 109, 59, 0.25);
+        }
+
+        .save-btn:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+     <div class="container">
+
+     <div class="input-group">
+            <label for="username">Your Name</label>
+            <input type="text" placeholder="Enter your name" id="username">
+     </div>
+
+        <div class="input-group">
+            <label for="email">Email Address</label>
+            <input type="email" placeholder="Enter your email" id="email">
+        </div>
+
+        <button class="save-btn" onclick="saveInfo()">
+            Save Information
+        </button>
+        </div>
+   <script>
+        function saveInfo(){
+            var date = new Date();
+            date.setMonth(date.getMonth() + 1);
+
+            var val = document.getElementById("username").value; 
+            var email = document.getElementById("email").value;
+
+            //Persistent Cookie
+            document.cookie = "username=" + val + "; expires = " + date; 
+            document.cookie = "email=" + encodeURIComponent(email) + "; expires=" + date.toUTCString() + "; path=/";        }
+    </script>
+</body>
+</html>

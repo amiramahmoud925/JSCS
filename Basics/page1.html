@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.write("Hello World");
+        console.log("Display Environment");
+
+        var firstname ="John";
+        var lastname="Doe";
+        var fullname= firstname + " " + lastname;
+        console.log(fullname);
+
+        var response= prompt("What is your name?");
+        if(response){
+            document.write("<br>" + "Hello " + response);
+        } else {
+            alert("You didn't enter your name.");
+        }
+
+        var favColor = prompt("Select your favorite color?" , "red , green , blue");
+
+        var color;
+        var flag = 1;
+        switch(favColor){
+            case"red":
+                color="Red";
+                break;
+            case"green":
+                color="Green";
+                break;     
+            case "blue":
+                color='Blue';
+                break;
+            default:
+                flag=0;
+                alert("You didn't select a color");
+        }
+
+        if(flag){
+            document.write("<br>" + "Your favorite color is " + color);
+        }
+
+    </script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <p onclick="alert('Hello World!')">Demo#1</p>
+</body>
+</html>

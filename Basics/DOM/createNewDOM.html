@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New DOM Elements</title>
+    <style>
+        #div{
+            border: 2px solid black;
+            height: 200px;
+            width: 200px;
+            margin-bottom: 10px;
+        }
+
+    </style>
+    <script>
+        function addEle(){
+                //inside the box(div)
+                var AddText = document.createTextNode("Simple Node Text");
+                var div = document.getElementById("div");
+                div.appendChild(AddText);
+
+                //outside the box(div)
+                var AddNewText = document.createTextNode("Hello World");
+                document.body.appendChild(AddNewText);
+
+        }
+        </script>
+</head>
+<body>
+    
+    <div id="div"></div>
+
+    <input type="button" value="Add Element" onclick="addEle()">
+
+
+
+</body>
+</html>

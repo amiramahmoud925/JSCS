@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Object Model</title>
+
+    <style>
+        .c1{
+            color:red;
+        }
+
+        input[type="text"]{
+            border: 1px solid #ccc;
+            padding: 5px;
+            color: white;
+            background-color: #635353;
+        }
+    </style>
+
+    <script>
+        function change(){
+           var ele = document.querySelectorAll("input[type='text']");
+
+           for(var i=0; i<ele.length; i++){
+                ele[i].style.backgroundColor = "blue";
+                ele[i].style.color = "white";
+           }
+
+           var dives = document.getElementById("div-1");
+           dives.innerHTML = "Ali";
+           dives.style.color = "red";
+        }
+
+        
+
+    </script>
+</head>
+<body>
+    <div id="div-1" class="dives">Hello </div>
+    <div id="div-2" class="dives">World</div>
+    <div id="div-3" class="c1">!</div>
+
+    <form action="">
+        <label>User Name</label>
+        <input type="text" name="username" style="margin-bottom: 10px;">
+        <br>
+        <label>User Address</label>
+        <input type="text" name="address" style="margin-bottom: 10px;">
+        <br>
+        <label>Gender</label>
+        <input type="radio" name="gender" value="male"> Male
+        <input type="radio" name="gender" value="female"> Female
+        <br>
+        <input type="button" value="change" style="margin-top: 10px;" onclick="change()"> 
+
+    </form>
+
+</body>
+</html>

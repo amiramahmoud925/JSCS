@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>object Object</title>
+    <script>
+        // assign function into variable
+        //anonymous function
+        var myFun = function(a,b) {
+            return a+b;
+        };
+        myFun(5,6);
+
+        // assign function into array element
+        var arr = [1,2,3,"abc",function(a,b){return a*b;}];
+        arr[4](5,6);
+
+
+        // assign function from another function
+        function newAdd(a,b,c){
+            var sum = function(){
+                return a+b+c;
+            };
+            return sum;
+        }
+        var result = newAdd(11,5,9);
+        result();
+
+        // Object Object
+        var obj = {
+            name: "John",
+            age: 30,
+            city: "New York",
+            info: function(){
+                return this.name + " is " + this.age + " years old and lives in " + this.city;
+            }
+        };
+
+        console.log(obj.name);
+        console.log(obj.age);
+        console.log(obj.city);
+        console.log(obj.info());
+
+        for(i in obj){
+           if(typeof obj[i] !== "function"){
+              console.log(i + " : " + obj[i]);
+            }
+        }
+
+        //object by factory function
+        function employee(name , dept,sal){
+            return {
+                empName:name,
+                empDept:dept,
+                empSalary:sal,
+                empInfo:function(){
+                    return this.empName + " works in " + this.empDept + " department and earns " + this.empSalary;
+                }
+            }
+        }
+        var emp = employee("John","IT",50000);
+        console.log(emp.empName);
+        console.log(emp.empDept);
+        console.log(emp.empSalary);
+        console.log(emp.empInfo());
+
+        //object by constructor function
+        function Employee(name , dept,sal){
+            this.empName = name;
+            this.empDept = dept;
+            this.empSalary = sal;
+            this.empInfo = function(){
+                return this.empName + " works in " + this.empDept + " department and earns " + this.empSalary;
+            };
+     }   
+        
+        var me = new Employee("Loly","Sofyware",10000);
+        console.log(me.empName);
+        console.log(me.empDept);
+        console.log(me.empSalary);
+        console.log(me.empInfo());
+
+        console.log(Object.keys(me));
+        console.log(Object.values(me));
+
+
+        console.log(me.hasOwnProperty("empName"));
+        //DELETE PROPERTY
+        console.log(delete me.empName);
+        // NOT FOUND empName
+        console.log(me.hasOwnProperty("empName"));
+
+        console.log(me);
+
+        //Data Descriptors
+        var name = "Ali";
+        var age = 22;
+        var address = "123 st.";
+
+        var obj ={};
+        //for name property
+        Object.defineProperty(obj, "name", {
+           value: name,
+           writable: true,
+           enumerable: true,
+           configurable: true
+        });
+        //for all properties
+        Object.defineProperties(obj,{
+            name:{
+                value:name,
+                writable:true,
+                enumerable:true,
+                configurable:true
+            },
+            age:{
+                value:age,
+                writable:true,
+                enumerable:true,
+                configurable:true
+            },
+            address:{
+                value:address,
+                writable:true,
+                enumerable:true,
+                configurable:true
+            }
+        });
+
+        console.log(obj.name);
+        console.log(obj.age);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
